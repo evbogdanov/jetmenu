@@ -1,11 +1,14 @@
 import React, { StrictMode } from 'react'
-import { GlobalStyle } from './styled'
+import Menu from '../Menu'
+import { GlobalStyle, Main } from './styled'
 
 function App() {
   return (
     <StrictMode>
       <GlobalStyle />
-      <h1>Hello, App</h1>
+      <Main>
+        <Menu />
+      </Main>
     </StrictMode>
   )
 }

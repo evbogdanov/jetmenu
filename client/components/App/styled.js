@@ -13,6 +13,10 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Open Sans', sans-serif;
     font-size: 14px;
   }
+
+  ul {
+    list-style-type: none;
+  }
 `
 
 export const Main = styled.main`

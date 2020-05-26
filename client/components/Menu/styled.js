@@ -7,4 +7,5 @@ export const Nav = styled.nav`
   background-color: #fafafa;
   border-right: ${navBorder};
   border-left: ${navBorder};
+  padding-top: 30px;
 `

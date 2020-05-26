@@ -1,0 +1,8 @@
+{
+  "name": "jetmenu",
+  "version": "1.0.0",
+  "main": "server/index.js",
+  "repository": "git@github.com:evbogdanov/jetmenu.git",
+  "author": "Ev Bogdanov",
+  "license": "MIT"
+}

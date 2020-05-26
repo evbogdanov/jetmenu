@@ -1,6 +1,8 @@
 import React from 'react'
-import MenuItemsPlaceholder from './components/MenuItemsPlaceholder'
-import { Nav } from './styled'
+import {
+  Nav,
+  MenuItemsPlaceholder,
+} from './styled'
 
 function Menu() {
   return (

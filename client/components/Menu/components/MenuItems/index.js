@@ -12,10 +12,13 @@ function MenuItems({ items }) {
     if (item.type === 'anchor') return null
 
     const { id, path, title, shouldShowChildren, children } = item
+    const hasChildren = children.length > 0
 
     return (
       <li key={id}>
         <Item
+          isArrowVisible={hasChildren}
+          isArrowRotated={shouldShowChildren}
           data-path={path}
           onClick={handleClick}
         >

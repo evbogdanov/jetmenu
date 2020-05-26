@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import arrowImg from './assets/arrow.svg'
 
 export const Item = styled.div`
@@ -18,7 +18,13 @@ export const Item = styled.div`
     content: '';
     width: 8px;
     height: 5px;
-    margin: 7px 4px 0 0;
+    margin: 8px 4px 0 0;
     background: url('${arrowImg}') no-repeat center center;
+    visibility: ${({ isArrowVisible = false }) => isArrowVisible ? 'visible' : 'hidden'};
+    transition: transform 0.3s;
+    will-change: transform;
+    ${({ isArrowRotated = false }) => isArrowRotated && css`
+      transform: rotate(180deg);
+    `}
   }
 `

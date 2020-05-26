@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { StrictMode } from 'react'
+import { GlobalStyle } from './styled'
 
 function App() {
   return (
-    <h1>Hello, App</h1>
+    <StrictMode>
+      <GlobalStyle />
+      <h1>Hello, App</h1>
+    </StrictMode>
   )
 }
 

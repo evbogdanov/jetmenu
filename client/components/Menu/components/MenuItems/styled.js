@@ -5,7 +5,7 @@ export const Item = styled.div`
   color: #343434;
   line-height: 19px;
   letter-spacing: -0.1px;
-  padding: 6px 10px;
+  padding: 6px 10px 6px ${({ level = 0 }) => `${10 + level * 20}px`};
   display: flex;
 
   &:hover {

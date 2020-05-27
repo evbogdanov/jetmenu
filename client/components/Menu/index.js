@@ -23,7 +23,12 @@ function Menu() {
 
   return (
     <Nav>
-      {areItemsReady ? <MenuItems items={menuItems} /> : <MenuItemsPlaceholder />}
+      {areItemsReady ? (
+        <MenuItems
+          items={menuItems}
+          setItems={setMenuItems}
+        />
+      ) : <MenuItemsPlaceholder />}
     </Nav>
   )
 }

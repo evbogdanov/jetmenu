@@ -1,4 +1,4 @@
-function createItem({ type, id, path, data }) {
+function createItem({ type, id, path, level, data }) {
   if (type === 'anchor') {
     const anchor = data.entities.anchors[id]
 
@@ -8,6 +8,9 @@ function createItem({ type, id, path, data }) {
       path,
       title: anchor.title,
       url: `${anchor.url || ''}${anchor.anchor}`,
+      level,
+
+      // Anchor-specific fields
       parentId: anchor.parentId,
     }
   }
@@ -26,6 +29,7 @@ function createItem({ type, id, path, data }) {
       type: childType,
       id: childId,
       path: childPath,
+      level: level + 1,
       data,
     })
   })
@@ -36,6 +40,9 @@ function createItem({ type, id, path, data }) {
     path,
     title: page.title,
     url: page.url || '',
+    level,
+
+    // Page-specific fields
     areAllChildrenAnchors: pages.length === 0 && anchors.length > 0,
     shouldShowChildren: false,
     children,
@@ -48,6 +55,7 @@ export function transformServerDataToMenuItems(data) {
       type: 'page',
       id: topLevelId,
       path: topLevelIndex.toString(),
+      level: 0,
       data,
     })
   })

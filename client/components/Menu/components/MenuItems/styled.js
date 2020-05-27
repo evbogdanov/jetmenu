@@ -7,7 +7,7 @@ export const Item = styled.div`
   text-decoration: none;
   letter-spacing: ${({ isHighlighted }) => isHighlighted ? '-0.6' : '-0.1'}px;
   font-weight: ${({ isHighlighted = false }) => isHighlighted ? 'bold' : 'normal'};
-  background-color: ${({ isHighlighted = false }) => isHighlighted ? '#f0f0f0' : 'transparent'};
+  background-color: ${({ isHighlighted = false, isAnchor = false }) => (isHighlighted || isAnchor) ? '#f0f0f0' : 'transparent'};
   padding: 6px 10px 6px ${({ level = 0 }) => `${10 + level * 20}px`};
   display: flex;
   transition: font-weight 0.3s, background-color 0.3s;

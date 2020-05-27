@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Item } from './styled'
 import { produceItemsAfterClick } from './utils'
 
 function MenuItems({ items, setItems }) {
+  const [highlightedId, setHighlightedId] = useState(null)
+
   function handleClick(event) {
+    setHighlightedId(event.target.dataset.id)
     const nextItems = produceItemsAfterClick(items, event.target.dataset.path)
     setItems(nextItems)
   }
@@ -17,9 +20,11 @@ function MenuItems({ items, setItems }) {
     return (
       <li key={id}>
         <Item
+          isHighlighted={id === highlightedId}
           isArrowVisible={hasChildren && !areAllChildrenAnchors}
           isArrowRotated={shouldShowChildren}
           level={level}
+          data-id={id}
           data-path={path}
           onClick={handleClick}
         >

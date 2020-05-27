@@ -50,12 +50,14 @@ function MenuItems({ items, setItems }) {
     children
   }) {
     const hasChildren = children.length > 0
+    const isHighlighted = id === highlightedId
+    const isArrowVisible = hasChildren && (!areAllChildrenAnchors || isHighlighted)
 
     return (
       <li key={id}>
         <Item
-          isHighlighted={id === highlightedId}
-          isArrowVisible={hasChildren && (!areAllChildrenAnchors || id === highlightedId)}
+          isHighlighted={isHighlighted}
+          isArrowVisible={isArrowVisible}
           isArrowRotated={shouldShowChildren}
           level={level}
           data-id={id}

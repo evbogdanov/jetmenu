@@ -6,9 +6,14 @@ function MenuItems({ items, setItems }) {
   const [highlightedId, setHighlightedId] = useState(null)
 
   function handleClick(event) {
-    setHighlightedId(event.target.dataset.id)
-    const nextItems = produceItemsAfterClick(items, event.target.dataset.path)
+    const nextItems = produceItemsAfterClick({
+      currentItems: items,
+      pathOfClickedItem: event.target.dataset.path,
+      highlightedId,
+    })
+
     setItems(nextItems)
+    setHighlightedId(event.target.dataset.id)
   }
 
   function renderItem(item) {

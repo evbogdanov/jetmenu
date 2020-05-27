@@ -1,6 +1,6 @@
 import produce from 'immer'
 
-export function getItemAtPath(items, path) {
+function getItemAtPath(items, path) {
   const keys = path.split('->')
 
   let pointer = items
@@ -12,18 +12,20 @@ export function getItemAtPath(items, path) {
   return pointer
 }
 
-export function produceItemsAfterClick(items, pathOfClickedItem) {
-  const keys = pathOfClickedItem.split('->')
+export function produceItemsAfterClick({
+  currentItems,
+  pathOfClickedItem,
+  highlightedId,
+}) {
+  return produce(currentItems, draft => {
+    const item = getItemAtPath(draft, pathOfClickedItem)
 
-  return produce(items, draft => {
-    let pointer = draft
+    if (
+      item.type !== 'page' ||
+      item.children.length === 0 ||
+      (item.id !== highlightedId && item.shouldShowChildren)
+    ) return
 
-    for (const key of keys) {
-      pointer = pointer[key]
-    }
-
-    if (pointer.type === 'page' && pointer.children.length > 0) {
-      pointer.shouldShowChildren = !pointer.shouldShowChildren
-    }
+    item.shouldShowChildren = !item.shouldShowChildren
   })
 }
